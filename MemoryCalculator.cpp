@@ -27,10 +27,10 @@ public:
             if (value != 0)
                 memory /= value;
             else
-                std::cout << "Error: Division by zero\n";
+				throw std::invalid_argument("Division by zero");
             break;
         default:
-            std::cout << "Error: Invalid operation\n";
+            throw std::invalid_argument("Invalid operation");
         }
         return memory;
     }
