@@ -38,6 +38,17 @@ public:
         calculateInt(operation, value);
         return *this;
 	}
+    Calculator& operator-(int value) { return calculate('-', value);}
+	Calculator& operator+(int value) { return calculate('+', value); }
+	Calculator& operator*(int value) { return calculate('*', value); }
+	Calculator& operator/(int value) { return calculate('/', value); }
+	Calculator& operator=(int value) { setMemory(value); return *this; }
+	Calculator& operator+=(int value) { return calculate('+', value); }
+	Calculator& operator-=(int value) { return calculate('-', value); }
+	Calculator& operator*=(int value) { return calculate('*', value); }
+	Calculator& operator/=(int value) { return calculate('/', value); }
+
+
     int getMemory() const {
         return memory;
     }
@@ -47,6 +58,7 @@ int main()
 {
     Calculator calc = 10;
 	int result = calc.calculate('+', 5).calculate('-', 15).getMemory();
+    calc + 5 * 10;
 	bool doWhile = true;
 	std::cout << "Memory Calculator\n";
     std::cout << "Current Memory: " << calc.getMemory() << "\n";
