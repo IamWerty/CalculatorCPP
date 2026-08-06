@@ -20,15 +20,9 @@ public:
     int calculateInt(char operation, int value) {
         switch (operation)
         {
-        case '+':
-            memory += value;
-            break;
-        case '-':
-            memory -= value;
-            break;
-        case '*':
-            memory *= value;
-            break;
+        case '+': memory += value; break;
+        case '-': memory -= value; break;
+        case '*': memory *= value; break;
         case '/':
             if (value != 0)
                 memory /= value;
@@ -40,7 +34,11 @@ public:
         }
         return memory;
     }
-    int getMemory() {
+    Calculator& calculate(char operation, int value) {
+        calculateInt(operation, value);
+        return *this;
+	}
+    int getMemory() const {
         return memory;
     }
 };
@@ -48,6 +46,7 @@ public:
 int main()
 {
     Calculator calc = 10;
+	int result = calc.calculate('+', 5).calculate('-', 15).getMemory();
 	bool doWhile = true;
 	std::cout << "Memory Calculator\n";
     std::cout << "Current Memory: " << calc.getMemory() << "\n";
